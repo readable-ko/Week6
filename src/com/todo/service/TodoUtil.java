@@ -38,7 +38,7 @@ public class TodoUtil {
 		System.out.println("마감일자 > ");
 		due_date = sc.nextLine().trim();
 		
-		TodoItem t = new TodoItem(title, category, desc, due_date);
+		TodoItem t = new TodoItem(title, desc, category, due_date);
 		if(l.addItem(t) > 0)
 			System.out.println("내용이 추가되었습니다.");
 	}
