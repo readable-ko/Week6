@@ -5,12 +5,23 @@ import java.util.Date;
 import java.util.StringTokenizer;
 
 public class TodoItem {
+	private int ID;
     private String title;
     private String desc;
     private String current_date;
     private String category;
     private String due_date;
 
+    public TodoItem(String title, String categori, String desc, String due_date, int ID, String current_date){
+        this.title=title;
+        this.category = categori;
+        this.desc=desc;
+        this.due_date = due_date;
+        SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+        this.ID = ID;
+        this.current_date= current_date;
+    }
+    
     public TodoItem(String title, String categori, String desc, String due_date){
         this.title=title;
         this.category = categori;
@@ -70,10 +81,18 @@ public class TodoItem {
 
 	@Override
     public String toString() {
-    	return "[" + category + "]" + title + " - " + desc + " - " + due_date + " - " + current_date;
+    	return ID + ". " + "[" + category + "]" + title + " - " + desc + " - " + due_date + " - " + current_date;
     }
     
     public String toSaveString() {
     	return title + "##" + category + "##" + desc + "##" + due_date + "##" + current_date + "\n";
     }
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setId(int ID) {
+		this.ID = ID;
+	}
 }
