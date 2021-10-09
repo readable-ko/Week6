@@ -164,13 +164,11 @@ public class TodoUtil {
 			System.out.println("데이터 저장 완료!!");
 			w.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public static void loadList(TodoList l, String filename) {
-		// TODO Auto-generated method stub
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(filename));
 			
