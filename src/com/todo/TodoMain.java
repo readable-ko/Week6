@@ -51,7 +51,6 @@ public class TodoMain {
 				break;
 				
 			case "ls_date":
-				l.sortByDate();
 				System.out.println("날짜순으로 정렬하였습니다.");
 				TodoUtil.listAll(l,"due_date", 1);
 				break;
@@ -65,8 +64,17 @@ public class TodoMain {
 				TodoUtil.listCateAll(l);
 				break;
 				
-			case "find":
+			case "ls_comp":
+				TodoUtil.listAll(l, 1);
+				break;
+				
+			case "comp":
 				String str = sc.nextLine().trim();
+				TodoUtil.completeItem(l, str);
+				break;
+				
+			case "find":
+				str = sc.nextLine().trim();
 				TodoUtil.find(l, str);
 				break;
 				

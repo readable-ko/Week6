@@ -6,27 +6,41 @@ import java.util.StringTokenizer;
 
 public class TodoItem {
 	private int ID;
+	private int is_completed;
     private String title;
     private String desc;
     private String current_date;
     private String category;
     private String due_date;
 
-    public TodoItem(String title, String categori, String desc, String due_date, int ID, String current_date){
+    public TodoItem(String title, String desc, String categori, String due_date, int ID, String current_date, int is_completed){
         this.title=title;
         this.category = categori;
         this.desc=desc;
         this.due_date = due_date;
         SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
         this.ID = ID;
+        this.is_completed = is_completed;
         this.current_date= current_date;
     }
     
-    public TodoItem(String title, String categori, String desc, String due_date){
+    public TodoItem(String title, String desc, String categori, String due_date, int ID, String current_date){
         this.title=title;
         this.category = categori;
         this.desc=desc;
         this.due_date = due_date;
+        SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+        this.ID = ID;
+        this.is_completed = 0;
+        this.current_date= current_date;
+    }
+    
+    public TodoItem(String title, String desc, String categori, String due_date){
+        this.title=title;
+        this.category = categori;
+        this.desc=desc;
+        this.due_date = due_date;
+        this.is_completed = 0;
         SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
         this.current_date=f.format(new Date());
     }
@@ -81,7 +95,11 @@ public class TodoItem {
 
 	@Override
     public String toString() {
-    	return ID + ". " + "[" + category + "]" + title + " - " + desc + " - " + due_date + " - " + current_date;
+		String completed = "";
+		if(is_completed == 1) 
+			completed = "[V]";
+		
+    	return ID + ". " + "[" + category + "] " + title + completed + " - " + desc + " - " + due_date + " - " + current_date;
     }
     
     public String toSaveString() {
@@ -94,5 +112,13 @@ public class TodoItem {
 
 	public void setId(int ID) {
 		this.ID = ID;
+	}
+
+	public int getIs_completed() {
+		return is_completed;
+	}
+
+	public void setIs_completed(int is_completed) {
+		this.is_completed = is_completed;
 	}
 }

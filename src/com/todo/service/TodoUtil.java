@@ -23,11 +23,11 @@ public class TodoUtil {
 		System.out.println("[항목 추가] \n"
 				+ "제목 > ");
 		
-		title = sc.nextLine();
-		/*if (list.isDuplicate(title)) {
+		title = sc.nextLine().trim();
+		if (l.isDuplicate(title)) {
 			System.out.printf("제목이 중복됩니다!");
 			return;
-		}*/
+		}
 		
 		System.out.println("카테고리 > ");
 		category = sc.next();
@@ -77,10 +77,10 @@ public class TodoUtil {
 
 		System.out.println("새 제목 > ");
 		new_title = sc.nextLine().trim();
-		/*if (l.isDuplicate(new_title)) {
+		if (l.isDuplicate(new_title)) {
 			System.out.println("중복된 제목입니다!");
 			return;
-		}*/
+		}
 		
 		System.out.println("새 카테고리 > ");
 		new_category = sc.nextLine().trim();
@@ -99,6 +99,14 @@ public class TodoUtil {
 		
 	}
 	
+	public static void completeItem(TodoList l, String num) {
+		
+		if(l.completeItem(num) > 0)
+			System.out.println("체크 완료하였습니다.");
+		else
+			System.out.println("체크에 실패하였습니다.");
+		
+	}
 
 	public static void find(TodoList l, String keyword) {
 		int count = 0;
@@ -121,6 +129,12 @@ public class TodoUtil {
 	public static void listAll(TodoList l) {
 		System.out.printf("[전체 목록, 총 %d개\n", l.getCount());
 		for (TodoItem item : l.getList()) {
+			System.out.println(item.toString());
+		}
+	}
+	
+	public static void listAll(TodoList l, int num) {
+		for (TodoItem item : l.getList(num)) {
 			System.out.println(item.toString());
 		}
 	}
